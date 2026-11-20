@@ -1,12 +1,17 @@
-# TrenRadar
+# TrenRadar v3
+Portal Next.js sin persistencia propia. Integra tres operadores en una sola búsqueda.
 
-## Despliegue en Vercel
-1. Sube todos estos archivos a GitHub.
-2. Importa el repositorio en Vercel.
-3. Deploy.
+## Fuentes
+- Renfe: GTFS-RT de trip updates (realtime).
+- OUIGO España: GTFS estático público publicado en el ecosistema NAP/Transitland.
+- iryo: feed GTFS comunitario registrado en MobilityData. No se presenta como realtime.
 
-## Google Analytics
-En Vercel > Project > Settings > Environment Variables añade:
+## Vercel
+Sube el repositorio e impórtalo. No requiere variables para funcionar.
+
+### Google Analytics
+Añade en Vercel > Settings > Environment Variables:
 NEXT_PUBLIC_GOOGLE_ANALYTICS=G-XXXXXXXXXX
 
-Si no configuras la variable, la web funciona sin Analytics.
+### Sustituir feeds
+Opcionalmente puedes definir OUIGO_GTFS_URL e IRYO_GTFS_URL para cambiar la fuente sin tocar código.

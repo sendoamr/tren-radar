@@ -1,4 +1,4 @@
 import './styles.css';
-import { GoogleAnalytics } from '@next/third-parties/google';
-export const metadata={title:'TrenRadar | Estado de trenes en España',description:'Consulta el estado disponible de trenes de larga y media distancia en España.'};
-export default function RootLayout({children}){const gaId=process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;return <html lang="es"><body>{children}</body>{gaId?<GoogleAnalytics gaId={gaId}/>:null}</html>}
+import {GoogleAnalytics} from '@next/third-parties/google';
+export const metadata={title:'TrenRadar | Trenes en España',description:'Busca trenes por número, origen y destino. Renfe, iryo y OUIGO.'};
+export default function RootLayout({children}){const ga=process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;return <html lang="es"><body>{children}</body>{ga?<GoogleAnalytics gaId={ga}/>:null}</html>}
