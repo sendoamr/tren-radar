@@ -1,0 +1,1 @@
+export function parseGtfsTime(value:string):number { const m=/^(\d{1,2}):(\d{2}):(\d{2})$/.exec(value); if(!m) throw new Error(`Hora GTFS inválida: ${value}`); const [,h,mi,s]=m.map(Number); if(mi>59||s>59) throw new Error(`Hora GTFS inválida: ${value}`); return ((h*60+mi)*60+s)*1000; }

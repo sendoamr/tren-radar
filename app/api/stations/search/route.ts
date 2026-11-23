@@ -1,0 +1,2 @@
+import { NextRequest, NextResponse } from "next/server"; import { z } from "zod"; import { searchStations } from "@/lib/domain/station-search";
+export function GET(req:NextRequest){const parsed=z.string().min(2).max(100).safeParse(req.nextUrl.searchParams.get("q")); if(!parsed.success)return NextResponse.json({error:{code:"INVALID_QUERY",message:"Introduce al menos 2 caracteres."}},{status:400}); return NextResponse.json({data:searchStations(parsed.data),meta:{generatedAt:new Date().toISOString()}});}

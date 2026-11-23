@@ -1,0 +1,1 @@
+import {describe,it,expect} from "vitest";import {parseGtfsTime} from "../lib/gtfs/time";describe("GTFS time",()=>{it("accepts times over 24h",()=>expect(parseGtfsTime("25:10:00")).toBe(90600000));it("rejects invalid minutes",()=>expect(()=>parseGtfsTime("10:70:00")).toThrow())});

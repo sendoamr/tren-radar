@@ -1,0 +1,1 @@
+import {describe,it,expect} from "vitest";import {searchStations} from "../lib/domain/station-search";describe("station aliases",()=>{for(const q of ["Sevilla Santa Justa","Sevilla-Santa Justa","Barcelona Sants","Barcelona-Sants","Madrid Atocha","Madrid-Puerta de Atocha"]){it(q,()=>expect(searchStations(q)[0]?.score).toBeGreaterThan(.9))}});

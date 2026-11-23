@@ -1,0 +1,10 @@
+create table data_sources(id text primary key,name text not null,url text,status text not null,license text,last_updated_at timestamptz);
+create table stations(id text primary key,name text not null,normalized_name text not null,lat double precision,lon double precision,source_id text references data_sources(id));
+create index stations_normalized_idx on stations(normalized_name);
+create table trips(id text primary key,route_id text not null,service_id text not null,operator_id text,train_number text);
+create table stop_times(trip_id text references trips(id),station_id text references stations(id),stop_sequence int,arrival_seconds int,departure_seconds int,primary key(trip_id,stop_sequence));
+create index stop_times_station_idx on stop_times(station_id,departure_seconds);
+create table incidents(id text primary key,title text not null,status text not null,started_at timestamptz,updated_at timestamptz,source_id text references data_sources(id));
+create table delay_observations(id bigserial primary key,trip_id text,delay_seconds int,observed_at timestamptz not null,source_id text references data_sources(id));
+create index delay_latest_idx on delay_observations(trip_id,observed_at desc);
+create table ingestion_runs(id bigserial primary key,source_id text references data_sources(id),started_at timestamptz,finished_at timestamptz,status text,records_read bigint default 0,records_written bigint default 0,records_rejected bigint default 0,error text,feed_version text);

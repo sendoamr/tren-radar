@@ -1,0 +1,2 @@
+import { existsSync,readdirSync } from "node:fs";import { validateFileNames } from "../lib/gtfs/validator";
+const dir=process.argv[2];if(!dir||!existsSync(dir)){console.error("Uso: npm run import:gtfs -- /ruta/al/gtfs-extraido");process.exit(1)}const result=validateFileNames(readdirSync(dir));if(!result.valid){console.error(`Feed inválido. Faltan: ${result.missing.join(", ")}`);process.exit(1)}console.log("GTFS validado. Adaptador de persistencia preparado para conectar PostgreSQL.");

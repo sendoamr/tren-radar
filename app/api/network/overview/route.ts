@@ -1,0 +1,1 @@
+import {NextResponse} from "next/server";export function GET(){return NextResponse.json({status:"INSUFFICIENT_DATA",trains:[],incidents:[],updatedAt:new Date().toISOString(),message:"No hay fuentes de tiempo real configuradas. No se muestran trenes ni incidencias simulados."});}
